@@ -1,33 +1,39 @@
-import os
-import logging
-from logging.handlers import SMTPHandler, RotatingFileHandler
-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
+from flask_moment import Moment
+
+import os
+import logging
+from logging.handlers import SMTPHandler, RotatingFileHandler
 
 from config import Config
 
-# Flask app
+
+# Flask
 app = Flask(__name__)
 app.config.from_object(Config)
 
-# Database
+# Database & Flask Migrate
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-# Login manager
+# Login Manager
 login = LoginManager(app)
 login.login_view = 'login'
 
-# Email service
+# Flask Email
 mail = Mail(app)
 
 # Bootstrap
 bootstrap = Bootstrap(app)
+
+# Flask Moment
+moment = Moment(app)
+
 
 if not app.debug:
 
