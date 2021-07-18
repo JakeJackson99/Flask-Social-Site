@@ -5,3 +5,5 @@
 .pem
 .pub
 env/
+__pychache__/
+.vscode/
